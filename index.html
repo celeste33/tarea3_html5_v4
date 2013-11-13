@@ -14,22 +14,59 @@
 		</style>
 		<script src="javascript/jquery-1.10.2.min.js"></script>
 		<script>
-			// SU CODIGO AQUI	
+			// SU CODIGO AQUI
+			
+			
+			/*$(function() {
+				var boton = $("#boton-reproducir");
+
+				boton.click(function() {
+					var video = $("#video");
+					var edoVideo = $("#estado-video");
+					var elVideo = $("video")[0];
+					elVideo.play();
+					video.attr("class", "sombras");
+					edoVideo.html("Video Activo");
+
+				});
+			});
 			
 			$(function(){
-				var boton = $("boton-reproducir");
-				
-				boton.click(function(){
-					var elVideo = $("video")[0];
-	          		elVideo.play();
-					
+				var pausa = $("#boton-pausa");
+				pausa.click(function(){
+					var videoP = $("video")[0];
+                  	videoP.pause();
+                  	var cvideo = $("#video");
+                  	cvideo.removeClass("sombras");
+                  	var txt = $("#estado-video");
+                  	txt.html("Video Pausado");
+
 				});
 				
-          		
+			});*/
+			
+			$(function(){
+				var boton=$("#boton-reproducir");
+				boton.click(function(){
+					var elVideo = $("video")[0];
+					var video = $("#video");
+					var edoVideo = $("#estado-video");
+					if (elVideo.paused){
+						elVideo.play();
+						video.attr("class", "sombras");
+						edoVideo.html("Video Activo");
+						boton.html("Pausa");
+					}
+					else{
+						elVideo.pause();
+						video.removeClass("sombras");
+						edoVideo.html("Video Pausado");
+						boton.html("Reproducir");
+						
+					}
+				});
+			});
 
-				
-			});	
-							
 		</script>
 	</head>
 	<body>
@@ -49,7 +86,7 @@
 
 			<p id="controles">
 				<a id="boton-reproducir">Reproducir</a>
-				<a id="boton-pausa">Pausa</a>
+				
 			</p>
 
 		</div>
